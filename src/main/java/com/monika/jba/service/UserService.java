@@ -46,7 +46,7 @@ public class UserService {
 		User user = findOne(id);
 
 		List<Blog> blogs = blogRepository2.findByUser(user);
-		//List<Blog> blogs1 = blogRepository2.findByUserID();
+		// List<Blog> blogs1 = blogRepository2.findByUserID();
 
 		for (Blog blog : blogs) {
 			List<Item> items = itemRepository2.findByBlog(blog);
@@ -56,5 +56,5 @@ public class UserService {
 
 		return user;
 	}
-	
+
 }
