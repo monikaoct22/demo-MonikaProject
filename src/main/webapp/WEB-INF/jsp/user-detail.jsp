@@ -5,7 +5,7 @@
 
 <h1>${user.name}</h1>
 
-<c:forEach items="${users.blogs}" var="blog">
+<c:forEach items="${user.blogs}" var="blog">
 
 	<h1>${blog.name}</h1>
 	<p>${blog.url}</p>
