@@ -20,7 +20,7 @@
 		<tbody>
 			<c:forEach items="${blog.items }" var="item">
 				<tr>
-					<td>${item.title }</td>
+					<td>${item.title }  </td>
 					<td>${item.link }</td>
 				</tr>
 			</c:forEach>

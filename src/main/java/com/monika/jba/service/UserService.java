@@ -5,6 +5,8 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.monika.jba.entity.Blog;
@@ -19,6 +21,7 @@ import com.monika.jba.repository.UserRepository2;
  *
  */
 @Service
+@Transactional
 public class UserService {
 
 	@Autowired
@@ -49,12 +52,17 @@ public class UserService {
 		// List<Blog> blogs1 = blogRepository2.findByUserID();
 
 		for (Blog blog : blogs) {
-			List<Item> items = itemRepository2.findByBlog(blog);
+			List<Item> items = itemRepository2.findByBlog(blog,new PageRequest(0, 10, Direction.DESC, "publishedDate"));
 			blog.setItems(items);
 		}
 		user.setBlogs(blogs);
 
 		return user;
+	}
+
+	public void save(User user) {
+		// TODO Auto-generated method stub
+		userRepository2.save(user);
 	}
 
 }

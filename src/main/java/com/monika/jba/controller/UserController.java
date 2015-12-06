@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.monika.jba.entity.User;
 import com.monika.jba.service.UserService;
@@ -15,11 +17,20 @@ import com.monika.jba.service.UserService;
  * @author Monika
  *
  */
+/**
+ * @author Rohit
+ *
+ */
 @Controller
 public class UserController {
 
 	@Autowired
 	private UserService userservice;
+	
+	@ModelAttribute("user")
+	public User construct(){
+		return new User();
+	}
 
 	/**
 	 * @param model
@@ -45,4 +56,19 @@ public class UserController {
 		model.addAttribute("user", user);
 		return "user-detail";
 	}
+	
+	/**
+	 * @return
+	 */
+	@RequestMapping("/register")
+	public String showRegistrer() {
+		return "user-register";
+	}
+	
+	@RequestMapping(value= "/register",method=RequestMethod.POST)
+	public String doRegistrer(@ModelAttribute("user") User user) {
+		userservice.save(user);
+		return "user-register";
+	}
+	
 }

@@ -30,13 +30,14 @@
 <!-- TODO:  This is not working.will look into it later. -->
 <%-- <tilesx:useAttribute name="current"/> --%>
 <tiles:importAttribute name="current"/>
+
 <!-- ----------------------------------------- -->
 
 	<div class="container">
 	
 		<!-- Static navbar -->
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">	
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed"
 						data-toggle="collapse" data-target="#navbar" aria-expanded="false"
@@ -51,6 +52,7 @@
 					<ul class="nav navbar-nav">
 						<li class="{current == 'index' ? active :''}"><a href='<spring:url value="/"  />'>Home</a></li>
 						<li class="{current == 'users' ? active :''}"><a href='<spring:url value="/users.html" ></spring:url>'>Users</a></li>
+						<li class="{current == 'register' ? active :''}"><a href='<spring:url value="/register.html" ></spring:url>'>Register</a></li>
 						<li><a href="#">Contact</a></li>
 
 					</ul>
