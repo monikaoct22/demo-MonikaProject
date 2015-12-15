@@ -17,18 +17,19 @@ import com.monika.jba.service.UserService;
  * @author Monika
  *
  */
-/**
- * @author Rohit
- *
- */
 @Controller
 public class UserController {
 
 	@Autowired
 	private UserService userservice;
+
 	
+	/**
+	 * @return
+	 * To get the user object from JSP page.
+	 */
 	@ModelAttribute("user")
-	public User construct(){
+	public User construct() {
 		return new User();
 	}
 
@@ -56,7 +57,7 @@ public class UserController {
 		model.addAttribute("user", user);
 		return "user-detail";
 	}
-	
+
 	/**
 	 * @return
 	 */
@@ -64,11 +65,11 @@ public class UserController {
 	public String showRegistrer() {
 		return "user-register";
 	}
-	
-	@RequestMapping(value= "/register",method=RequestMethod.POST)
+
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String doRegistrer(@ModelAttribute("user") User user) {
 		userservice.save(user);
 		return "user-register";
 	}
-	
+
 }

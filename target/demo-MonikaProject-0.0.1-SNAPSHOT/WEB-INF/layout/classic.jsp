@@ -28,15 +28,14 @@
 </head>
 <body>
 <!-- TODO:  This is not working.will look into it later. -->
-<%-- <tilesx:useAttribute name="current"/> --%>
-<tiles:importAttribute name="current"/>
+<tilesx:useAttribute name="current" />
 <!-- ----------------------------------------- -->
 
 	<div class="container">
 	
 		<!-- Static navbar -->
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">	
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed"
 						data-toggle="collapse" data-target="#navbar" aria-expanded="false"
@@ -45,12 +44,15 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="<spring:url value="/"  />">JBA</a>
+					<a class="navbar-brand" href="<spring:url value="/"  />">Blog</a>
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li class="{current == 'index' ? active :''}"><a href='<spring:url value="/"  />'>Home</a></li>
-						<li class="{current == 'users' ? active :''}"><a href='<spring:url value="/users.html" ></spring:url>'>Users</a></li>
+						<li class="${current == 'index' ? active :''}"><a href='<spring:url value="/"  />'>Home</a></li>
+						<li class="${current == 'users' ? active :''}"><a href='<spring:url value="/users.html" ></spring:url>'>Users</a></li>
+						<li class="${current == 'register' ? active :''}"><a href='<spring:url value="/register.html" ></spring:url>'>Register</a></li>
+						<li class="${current == 'login' ? active :''}"><a href='<spring:url value="/login.html" ></spring:url>'>Login</a></li>
+						<li ><a href='<spring:url value="/logout" ></spring:url>'>Logout</a></li>
 						<li><a href="#">Contact</a></li>
 
 					</ul>

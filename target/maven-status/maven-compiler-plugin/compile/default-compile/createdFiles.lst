@@ -10,5 +10,6 @@ com\monika\jba\service\UserService.class
 com\monika\jba\service\InitDbService.class
 com\monika\jba\entity\Item.class
 com\monika\jba\repository\BlogRepository.class
+com\monika\jba\controller\LoginController.class
 com\monika\jba\repository\ItemRepository2.class
 com\monika\jba\repository\ItemRepository.class

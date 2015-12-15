@@ -10,9 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class IndexController {
 
+	/**
+	 * @return
+	 *
+	 * 		Home page of the application will be called from here.
+	 */
 	@RequestMapping("/index")
 	public String index() {
-		System.out.println("call index controller");
 
 		return "index";
 	}

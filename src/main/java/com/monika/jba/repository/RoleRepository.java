@@ -8,6 +8,8 @@ import com.monika.jba.entity.Role;
  * @author Monika
  *
  */
-public interface RoleRepository extends JpaRepository<Role, Integer>{
+public interface RoleRepository extends JpaRepository<Role, Integer> {
+
+	Role findByName(String string);
 
 }
