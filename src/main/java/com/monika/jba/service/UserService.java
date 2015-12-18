@@ -85,4 +85,13 @@ public class UserService {
 		userRepository2.save(user);
 	}
 
+	public User findOneWithBlogs(String name) {
+		User user = userRepository2.findByName(name);
+		return findOneWithBlogs(user.getId());
+	}
+
+	public void delete(int id) {
+		userRepository2.delete(id);
+	}
+
 }

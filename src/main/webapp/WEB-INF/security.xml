@@ -10,7 +10,7 @@
 		<csrf disabled="true" />
 		<intercept-url pattern="/users**" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/users/**" access="hasRole('ROLE_ADMIN')" />
-
+		
 		<form-login login-page="/login.html" /> <!-- authentication-failure-url="/Access_Denied" -->
 		<logout />
 	</http>

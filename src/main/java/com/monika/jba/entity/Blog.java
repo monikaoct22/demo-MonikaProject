@@ -1,6 +1,8 @@
 package com.monika.jba.entity;
 
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -26,7 +28,7 @@ public class Blog {
 	@JoinColumn(name = "user_id")
 	private User user;
 
-	@OneToMany(mappedBy = "blog", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "blog", fetch = FetchType.LAZY, cascade=CascadeType.REMOVE)
 	private List<Item> items;
 
 	public User getUser() {
@@ -68,4 +70,9 @@ public class Blog {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	
+		
+		
+	
 }

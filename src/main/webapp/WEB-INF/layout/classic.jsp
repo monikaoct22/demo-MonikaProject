@@ -58,9 +58,11 @@
 						<securitys:authorize access="hasRole('ROLE_ADMIN')">
 							<li class="${current == 'users' ? active :''}"><a
 								href='<spring:url value="/users.html" ></spring:url>'>Users</a></li>
-						</securitys:authorize>
+						</securitys:authorize >
+						<securitys:authorize access="! isAuthenticated()">
 						<li class="${current == 'register' ? active :''}"><a
 							href='<spring:url value="/register.html" ></spring:url>'>Register</a></li>
+							</securitys:authorize>
 						<securitys:authorize access="! isAuthenticated()">
 							<li class="${current == 'login' ? active :''}"><a
 								href='<spring:url value="/login.html" ></spring:url>'>Login</a></li>
@@ -69,7 +71,10 @@
 							<li><a href='<spring:url value="/logout" ></spring:url>'>Logout</a></li>
 						</securitys:authorize>
 						<li><a href="#">Contact</a></li>
-
+						<securitys:authorize access="isAuthenticated()">
+						<li class="${current == 'users' ? active :''}"><a
+								href='<spring:url value="/account.html" ></spring:url>'>My account</a></li>
+						</securitys:authorize>
 					</ul>
 
 				</div>
