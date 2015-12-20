@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
 
 /**
  * @author Monika
@@ -21,8 +24,15 @@ public class User {
 	@Id
 	@GeneratedValue
 	private Integer id;
+	
+	@Size(min=3,message="Name must be atleast 3 characters ")
 	private String name;
+	
+	@Size(min=1,message="invalid email address ")
+	@Email
 	private String email;
+	
+	@Size(min=5,message="Name must be atleast 5 characters ")
 	private String password;
 	private boolean enabled;
 

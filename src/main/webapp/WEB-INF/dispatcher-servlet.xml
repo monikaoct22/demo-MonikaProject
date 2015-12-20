@@ -6,6 +6,9 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 	
+	<!-- for validator -->
+	<mvc:annotation-driven/>
+	
 	<!-- TODO: Will change some format here. -->
 	<context:component-scan base-package="com.monika.jba.controller"></context:component-scan>
 

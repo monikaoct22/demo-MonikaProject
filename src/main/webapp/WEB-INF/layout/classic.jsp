@@ -24,6 +24,8 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
+
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
 <!-- Latest compiled and minified JavaScript -->
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -72,7 +74,7 @@
 						</securitys:authorize>
 						<li><a href="#">Contact</a></li>
 						<securitys:authorize access="isAuthenticated()">
-						<li class="${current == 'users' ? active :''}"><a
+						<li class="${current == 'account' ? active :''}"><a
 								href='<spring:url value="/account.html" ></spring:url>'>My account</a></li>
 						</securitys:authorize>
 					</ul>
