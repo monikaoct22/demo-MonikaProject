@@ -3,6 +3,7 @@ package com.monika.jba.entity;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -12,7 +13,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 
+import org.hibernate.type.TrueFalseType;
 import org.hibernate.validator.constraints.Email;
+
+import com.monika.jba.annotation.UniqueUsername;
 
 /**
  * @author Monika
@@ -24,15 +28,17 @@ public class User {
 	@Id
 	@GeneratedValue
 	private Integer id;
-	
-	@Size(min=3,message="Name must be atleast 3 characters ")
+
+	@Size(min = 3, message = "Name must be atleast 3 characters.")
+	@Column(unique = true)
+	@UniqueUsername(message= "This username is already exist.")
 	private String name;
-	
-	@Size(min=1,message="invalid email address ")
+
+	@Size(min = 1, message = "invalid email address.")
 	@Email
 	private String email;
-	
-	@Size(min=5,message="Name must be atleast 5 characters ")
+
+	@Size(min = 5, message = "Name must be atleast 5 characters.")
 	private String password;
 	private boolean enabled;
 
@@ -48,7 +54,7 @@ public class User {
 	@ManyToMany
 	private List<Role> roles;
 
-	@OneToMany(mappedBy = ("user"), fetch = FetchType.LAZY,cascade=CascadeType.REMOVE)
+	@OneToMany(mappedBy = ("user"), fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	private List<Blog> blogs;
 
 	public List<Blog> getBlogs() {

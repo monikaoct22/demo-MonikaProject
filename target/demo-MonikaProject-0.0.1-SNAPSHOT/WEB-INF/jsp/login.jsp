@@ -47,36 +47,15 @@
 }
 </style>
 
-<!-- <form class="form-signin" action="/demoMonikaProject/login"
+<form class="form-signin" action="<c:url value="/login" />" 
 	method='POST'>
 	<h2 class="form-signin-heading">Please sign in</h2>
 	<input type="text" name="username" id="inputEmail" class="form-control"
-		placeholder="Name" required autofocus> <input type="password"
+		placeholder="Name" required autofocus> 
+	<input type="password"
 		name="password" id="inputPassword" class="form-control"
 		placeholder="Password" required>
 	<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
 		in</button>
-</form> -->
-<%-- ${contextPath}/demoMonikaProject/j_spring_security_check --%>
-<!-- <form class="form-signin"
-		action='/demoMonikaProject/j_spring_security_check'
-		method='POST'> -->
-<form class="form-signin" action="<c:url value="/j_spring_security_check" />" method="POST">
-		<h2 class="form-signin-heading">Please sign in</h2>
-		<!-- <label for="inputUserName" class="sr-only">User Name:</label> -->
-		<input type="text" name='j_username' class="form-control"
-			placeholder="User Name" required autofocus>
-		<!-- <label for="inputPassword" class="sr-only">Password</label> -->
-		<input type="password" name='j_password' class="form-control"
-			placeholder="Password" required>
-		<!--  <div class="checkbox">
-          <label>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
-        </div> -->
-		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
-			in</button>
-		<input name="_csrf" type="hidden" value="" />
-		<%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> --%>
-		
-	</form>
+	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+</form>

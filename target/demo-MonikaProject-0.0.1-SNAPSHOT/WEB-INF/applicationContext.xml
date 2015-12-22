@@ -50,6 +50,7 @@
 	<!-- ***********************Define the base package of repository********************************************** -->
 	<jpa:repositories base-package="com.monika.jba.repository"></jpa:repositories>
 	
+	<!-- Import spring configuration xml  Will change the location of this file later.   -->
 	<import resource="security.xml" />
 
 </beans>

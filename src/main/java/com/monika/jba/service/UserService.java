@@ -94,4 +94,9 @@ public class UserService {
 		userRepository2.delete(id);
 	}
 
+	public User findOne(String username) {
+		return userRepository2.findByName(username);
+		
+	}
+
 }
