@@ -56,7 +56,7 @@ $(document).ready(function(){
 <form:form commandName="user" cssClass="form-horizontal registrationForm"> 
 	
 	<!--  Registration success check. -->	
-	<c:if test="${param.success eq true}">
+	<c:if test="${success eq true}">
 		<div class="alert alert-success">Registration successfully!</div>
 	</c:if>
 
