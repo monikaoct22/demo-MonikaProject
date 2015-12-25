@@ -40,7 +40,7 @@
 	<!-- We can set the default language property file. -->
 	<bean id="localeResolver"
 		class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
-		<property name="defaultLocale" value="en" />
+		<property name="defaultLocale" value="de" />
 	</bean>
 
 	<mvc:interceptors>

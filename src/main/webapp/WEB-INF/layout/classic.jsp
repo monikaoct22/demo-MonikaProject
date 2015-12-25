@@ -76,6 +76,23 @@
 						<li class="${current == 'account' ? active :''}"><a
 								href='<spring:url value="/account.html" ></spring:url>'><spring:message code="label.header.account" /></a></li>
 						</securitys:authorize>
+						<!--  Language dropdown -->
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle"
+								data-toggle="dropdown" role="button" aria-expanded="false"><spring:message code="label.header.language" /><span
+									class="caret"></span>
+							</a>
+
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="?language=en"><spring:message
+											code="label.header.english" /></a></li>
+							<li><a href="?language=zh_CN"><spring:message
+											code="label.header.chinese" /></a></li>
+								<li><a href="?language=de"><spring:message
+											code="label.header.other" /></a></li>
+							</ul>
+						</li>
+
 					</ul>
 
 				</div>
