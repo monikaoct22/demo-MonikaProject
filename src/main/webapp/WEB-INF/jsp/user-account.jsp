@@ -4,14 +4,14 @@
 <%@ include file="../layout/taglib.jsp"%>
 
 
-
-<!-- Button trigger modal -->
+     <!-- Start:Add new blog -->
+     <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal"
 	data-target="#myModal">New Blog</button>
 
 <form:form commandName="blog" cssClass="form-horizontal  blogForm">
 	<!-- Modal -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+	<div class="modal fade" id="myModal1" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -22,8 +22,10 @@
 					</button>
 					<h4 class="modal-title" id="myModalLabel">New Blog</h4>
 				</div>
+				<!-- End:Add new blog -->
+				
+			<!-- start : pop up for adding blog	 -->
 				<div class="modal-body">
-
 
 					<div class="form-group">
 						<label for="name" class="col-sm-2 control-label">Name:</label>
@@ -46,12 +48,14 @@
 
 				</div>
 			</div>
-
+     
 
 		</div>
 	</div>
 </form:form>
 
+
+ <!-- End : pop up for adding blog	 -->
 <br />
 <br />
 
@@ -66,21 +70,17 @@
 							$("#modalRemove .removebtn").attr("href",
 									$(this).attr("href"));
 							$("#modalRemove").modal();
-
 						});
 				$(".blogForm").validate(
 						{
-
 							rules : {
 								name : {
 									required : true,
 									minlength : 1
-
 								},
 								url : {
 									required : true,
 									url : true
-
 								},
 								highlight : function(element) {
 									$(element).closest('.form_group')
@@ -94,7 +94,6 @@
 								}
 							}
 						});
-
 			});
 </script>
 
@@ -123,7 +122,67 @@
 				<h1>${blog.name}</h1>
 				<p>${blog.url}</p>
 				<!--  TODO: Will add text dynamically depending on the language. -->
+				
+				
+				<!-- Start :add New item -->
+				
+				<button type="button"  class="btn btn-primary btn-lg " data-toggle="modal"
+	data-target="#myModal  ">New Item</button>
+
+    <form:form commandName="item" cssClass="form-horizontal  ItemForm">
+	<!-- Modal --> 
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">New Item</h4>
+				</div>
+			
+			
+			<!-- End :add New item -->	
+			
+			<!-- start : pop up for adding item	 -->
+				<div class="modal-body">
+
+					<div class="form-group">
+						<label for="title" class="col-sm-2 control-label">Title:</label>
+						<div class="col-sm-10">
+							<form:input path="title" cssClass="form-control" />
+							<form:errors path="title" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="link" class="col-sm-2 control-label">Link:</label>
+						<div class="col-sm-10">
+							<form:input path="link" cssClass="form-control" />
+							<form:errors path="link" />
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<input type="submit" class="btn btn-primary" value="Save item" />
+
+				</div>
+			</div>
+    
+
+		</div>
+	</div>
+</form:form>
+			
+			<!-- End : pop up for adding item	 -->
+		
+				
+				
+				
 				<table>
+				
 					<thead>
 						<tr>
 							<th>Title</th>
@@ -149,7 +208,7 @@
 
 
 
-	<!-- Modal -->
+	<!-- Remove blog confirmation message -->
 	<div class="modal fade" id="modalRemove" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
@@ -169,4 +228,5 @@
 			</div>
 		</div>
 	</div>
+	<!-- END: Remove blog confirmation message -->
 </div>

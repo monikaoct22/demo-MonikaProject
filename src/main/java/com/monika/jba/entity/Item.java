@@ -16,11 +16,45 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Item {
 
+	/**
+	 * No Argument Constructor.
+	 */
+	public Item() {
+
+	}
+
+	/**
+	 * Parameterized Constructor.
+	 * 
+	 * @param blog
+	 * @param title
+	 * @param link
+	 * @param publishedDate
+	 */
+	public Item(Blog blog, String title, String link, Date publishedDate) {
+		this.blog = blog;
+		this.title = title;
+		this.link = link;
+		this.publishedDate = publishedDate;
+	}
+
 	@Id
 	@GeneratedValue
 	private Integer id;
+
+	@Column(length = 1000)
 	private String title;
+
+	/*
+	 * @Lob
+	 * 
+	 * @Type(type="org.hibernate.type.StringClobType")
+	 * 
+	 * @Column(length=Integer.MAX_VALUE)
+	 */
 	private String description;
+
+	@Column(length = 1000)
 	private String link;
 
 	@Column(name = "published_date")

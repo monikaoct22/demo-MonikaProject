@@ -3,43 +3,51 @@
 
 <%@ include file="../layout/taglib.jsp"%>
 
-<<script type="text/javascript">
+<script type="text/javascript">
 $(document).ready(function(){
 	$(".registrationForm").validate(
-		{
-			
-			rules: {
+	{
+		rules: {
 			name: {
 				required : true,
-				minlength : 3
-				
+				minlength : 3,
+				remote: {
+					url: "<spring:url value='/register/available.html'/>",
+					type: "get",
+					data: {
+						username: function(){
+						return $("#name").val();
+						}
+					}
+				}	
 			},	
 			email: {
 				required : true,
 				email : true
-				
 			},		
 			password: {
 				required : true,
 				minlength : 5
-				
 			},		
 			password_again: {
 				required : true,
 				minlength : 5,
 				equalTo : "#password"
-			
-			},	
+			}
+		},	
 			highlight: function(element){
 				$(element).closest('.form_group').removeClass('has-success').addClass('has_error');
-						},
-						unhighlight: function(element){
-							$(element).closest('.form_group').removeClass('has-error').addClass('has_success');
-									}
+			},
+			unhighlight: function(element){
+				$(element).closest('.form_group').removeClass('has-error').addClass('has_success');
+			},
+			messages:{
+				name:{
+					remote: "User Name already exist"
+				}
+			}
 		}
-		}	
 	);
-	
 });
 
 
@@ -48,7 +56,7 @@ $(document).ready(function(){
 <form:form commandName="user" cssClass="form-horizontal registrationForm"> 
 	
 	<!--  Registration success check. -->	
-	<c:if test="${param.success eq true}">
+	<c:if test="${success eq true}">
 		<div class="alert alert-success">Registration successfully!</div>
 	</c:if>
 

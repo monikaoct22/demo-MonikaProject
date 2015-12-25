@@ -1,7 +1,6 @@
 package com.monika.jba.controller;
 
 import java.security.Principal;
-import java.util.List;
 
 import javax.validation.Valid;
 
@@ -14,10 +13,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.github.mustachejava.Binding;
 import com.monika.jba.entity.Blog;
+import com.monika.jba.entity.Item;
 import com.monika.jba.entity.User;
 import com.monika.jba.service.Blogservice;
+import com.monika.jba.service.ItemService;
 import com.monika.jba.service.UserService;
 
 /**
@@ -33,7 +33,9 @@ public class UserController {
 	@Autowired
 	private Blogservice blogservice;
 
-	
+	@Autowired
+	private ItemService itemService;
+
 	/**
 	 * @return
 	 */
@@ -41,8 +43,17 @@ public class UserController {
 	public Blog constructBlog() {
 		return new Blog();
 	}
+	
+	
+	@ModelAttribute("item")
+	public Item constructItem() {
+		return new Item();
+		
+		
+	}
+	
 
-			/**
+	 /**
 	 * @param model
 	 * @param principal
 	 * @return
@@ -81,6 +92,16 @@ public class UserController {
 		Blog blog=blogservice.findOne(id);
 		blogservice.delete(blog);
 		return "redirect:/account.html";
+	}
+	
+	@RequestMapping(value ="/addItem/{id},method = RequestMethod.POST")
+	public String addItem(Model model,@PathVariable int id, @Valid @ModelAttribute("item") Item item,BindingResult result, Principal principal){
+		if(result.hasErrors()){
+			return showRegistrer(model,principal);
+		}
+		itemService.save(item, id);
+		return "redirect:/account.html";
+		
 	}
 
 	

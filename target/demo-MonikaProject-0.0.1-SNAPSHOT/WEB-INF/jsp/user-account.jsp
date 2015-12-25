@@ -117,12 +117,60 @@
 					data-toggle="modal" data-target="#myModal">Remove</button> -->
 
 				<a
-					href="<spring:url value="/account/${blog.id}.html">+</spring:url>"
+					href="<spring:url value="/additem.html">+</spring:url>"
 					class="triggerRemove">Remove Blog</a>
 
 				<h1>${blog.name}</h1>
 				<p>${blog.url}</p>
 				<!--  TODO: Will add text dynamically depending on the language. -->
+				
+				
+				<button type="button" class="btn btn-primary btn-lg" data-toggle="modal"
+	data-target="#myModal">New Item</button>
+
+<form:form commandName="blog" cssClass="form-horizontal  blogForm">
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">New item</h4>
+				</div>
+				<div class="modal-body">
+
+
+					<div class="form-group">
+						<label for="title" class="col-sm-2 control-label">Title:</label>
+						<div class="col-sm-10">
+							<form:input path="title" cssClass="form-control" />
+							<form:errors path="title" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="link" class="col-sm-2 control-label">Link:</label>
+						<div class="col-sm-10">
+							<form:input path="link" cssClass="form-control" />
+							<form:errors path="link" />
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<input type="submit" class="btn btn-primary" value="Save" />
+
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+</form:form>
+				
 				<table>
 					<thead>
 						<tr>

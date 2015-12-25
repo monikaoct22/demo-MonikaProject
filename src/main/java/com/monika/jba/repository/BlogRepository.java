@@ -24,6 +24,8 @@ public interface BlogRepository extends JpaRepository<Blog, Integer> {
 
 	public Blog findById(Blog blog);
 
+	public Blog findById(Integer id);
+		
 	/**
 	 * @return
 	 */

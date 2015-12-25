@@ -3,14 +3,11 @@ package com.monika.jba.service;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.monika.jba.entity.Blog;
 import com.monika.jba.entity.Item;
 import com.monika.jba.entity.Role;
@@ -37,6 +34,10 @@ public class InitDbService {
 	@Autowired
 	private UserRepository2 userRepository;
 
+	/**
+	 * This method is for initial operations. This will call after all the beans
+	 * got Construct.
+	 */
 	@PostConstruct
 	public void init() {
 		Role roleUser = new Role();
@@ -53,6 +54,7 @@ public class InitDbService {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		userAdmin.setPassword(encoder.encode("admin"));
 		userAdmin.setEmail("admin@gmail.com");
+		
 		List<Role> roles = new ArrayList<Role>();
 		roles.add(roleAdmin);
 		roles.add(roleUser);
@@ -61,22 +63,16 @@ public class InitDbService {
 
 		Blog myBlog = new Blog();
 		myBlog.setName("Monika Blog");
-		myBlog.setUrl("http://feeds.feedburner.com/javavids?format=xml");
+		myBlog.setUrl("http://www.tutorialspoint.com/");
 		myBlog.setUser(userAdmin);
 		blogRepository.save(myBlog);
 
-		Item item1 = new Item();
-		item1.setBlog(myBlog);
-		item1.setTitle("first");
-		item1.setLink("http://www.javavids.com");
-		item1.setPublishedDate(new Date());
+		Item item1 = new Item(myBlog, "Envionment Setup",
+				"http://www.tutorialspoint.com/java/java_environment_setup.htm", new Date());
 		itemRepository.save(item1);
 
-		Item item2 = new Item();
-		item2.setBlog(myBlog);
-		item2.setTitle("second");
-		item2.setLink("http://www.javavids.com");
-		item2.setPublishedDate(new Date());
+		Item item2 = new Item(myBlog, "Regular Expressions",
+				"http://www.tutorialspoint.com/java/java_regular_expressions.htm", new Date());
 		itemRepository.save(item2);
 
 	}

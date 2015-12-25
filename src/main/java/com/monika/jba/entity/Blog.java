@@ -3,6 +3,7 @@ package com.monika.jba.entity;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -28,6 +29,7 @@ public class Blog {
 	
 	@Size(min=1,message="invalid url")
 	@URL(message="invalid url")
+	@Column(length=1000)
 	private String url;
 	
 	@Size(min=1,message="Name must be atleast 1 characters ")

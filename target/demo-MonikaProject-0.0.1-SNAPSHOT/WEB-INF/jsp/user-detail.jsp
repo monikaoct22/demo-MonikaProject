@@ -17,9 +17,7 @@
 			e.preventDefault();
 			$("#modalRemove .removebtn").attr("href", $(this).attr("href"));
 			$("#modalRemove").modal();
-
 		});
-
 	});
 </script>
 

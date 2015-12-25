@@ -8,6 +8,7 @@ com\monika\jba\annotation\UniqueUsernameValidator.class
 com\monika\jba\controller\UserController.class
 com\monika\jba\service\CustomUserDetailsService.class
 com\monika\jba\repository\RoleRepository.class
+com\monika\jba\service\ItemService.class
 com\monika\jba\service\UserService.class
 com\monika\jba\controller\AdminController.class
 com\monika\jba\service\InitDbService.class
