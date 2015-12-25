@@ -13,7 +13,7 @@
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
 	<!-- ***********Define the base package of repository ***************************** -->
-	<jpa:repositories base-package="com.monika.jba.repository"></jpa:repositories>
+	<jpa:repositories base-package="com.monika.*.repository"></jpa:repositories>
 
 	<!-- TODO: Later will use some production database e.g. mySQL or Oracle -->
 	<!-- in memory database. -->

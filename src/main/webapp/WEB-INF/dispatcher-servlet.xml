@@ -10,7 +10,7 @@
 	<mvc:annotation-driven />
 
 	<!-- TODO: Will change some format here. -->
-	<context:component-scan base-package="com.monika.jba.controller"></context:component-scan>
+	<context:component-scan base-package="com.monika.*.controller"></context:component-scan>
 
 	<!--*** When we are using tiles based view. ******************* -->
 	<bean id="tilesConfigurer"
