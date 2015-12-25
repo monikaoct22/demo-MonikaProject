@@ -62,7 +62,7 @@ public class InitDbService {
 		userRepository.save(userAdmin);
 
 		Blog myBlog = new Blog();
-		myBlog.setName("Monika Blog");
+		myBlog.setName("Java Blog");
 		myBlog.setUrl("http://www.tutorialspoint.com/");
 		myBlog.setUser(userAdmin);
 		blogRepository.save(myBlog);

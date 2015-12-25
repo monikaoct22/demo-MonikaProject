@@ -24,9 +24,9 @@
 <table class="table table-bordered table-hover table-striped">
 	<thead>
 		<tr>
-			<th>User Name:</th>
-			<th>Email:</th>
-			<th>operations</th>
+			<th><spring:message code="label.users.uName" /></th>
+			<th><spring:message code="label.users.email" /></th>
+			<th><spring:message code="label.users.operations" /></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -56,13 +56,13 @@
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title" id="myModalLabel">Remove Blog</h4>
+					<h4 class="modal-title" id="myModalLabel"><spring:message code="label.userAccount.blog.removeBlog" /></h4>
 				</div>
-				<div class="modal-body">Really wanna remove</div>
+				<div class="modal-body"><spring:message code="label.userAccount.blog.removeBlog.confirmation" /></div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
-				<a href="" class="btn btn-danger  removebtn">Remove</a>
+				<button type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="label.userAccount.blog.removeBlog.cancel" /></button>
+				<a href="" class="btn btn-danger  removebtn"><spring:message code="label.userAccount.blog.removeBlog.remove" /></a>
 			</div>
 		</div>
 	</div>

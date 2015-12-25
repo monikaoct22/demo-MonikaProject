@@ -8,10 +8,11 @@
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
 		<config>src/main/webapp/WEB-INF/dispatcher-servlet.xml</config>
-		<config>src/main/webapp/WEB-INF/applicationContext.xml</config>
-		<config>src/main/webapp/WEB-INF/security.xml</config>
+		<config>src/main/resources/META-INF/spring/security.xml</config>
+		<config>src/main/resources/META-INF/spring/app-base-context.xml</config>
 	</configs>
 	<autoconfigs>
+		<config>src/main/resources/META-INF/spring/applicationContext.xml</config>
 	</autoconfigs>
 	<configSets>
 	</configSets>

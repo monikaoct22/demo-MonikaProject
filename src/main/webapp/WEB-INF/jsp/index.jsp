@@ -3,20 +3,25 @@
 
 <%-- <%@ include file="../layout/taglib.jsp"%> --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
-<h1>Latest Items from the blogs.</h1>
+<h1><spring:message code="label.index.heading"></spring:message></h1>
 <table class="table table-bordered table-hover table-stripped">
 
 	<thead>
 		<tr>
-			<th>Date</th>
-			<th>Item</th>
+			<th><spring:message code="label.index.date"></spring:message></th>
+			<th><spring:message code="label.index.item"></spring:message></th>
 		</tr>
 	</thead>
 	<tbody>
 		<c:forEach items="${items}" var="item">
 			<tr>
-				<td><c:out value="${item.publishedDate}" /></td>
+				<td>
+				<c:out value="${item.publishedDate}" />
+				<br/>
+				 <c:out value="${item.blog.name}"/>
+				</td>
 				<td><strong> <a href="<c:out value ="${item.link}"/>"
 						target="_blank"> <c:out value="${item.title }" />
 					</a>
