@@ -49,10 +49,10 @@
 <form class="form-signin" action="<c:url value="/login" />" 
 	method='POST'>
 	<h2 class="form-signin-heading"><spring:message code="label.login.heading"/></h2>
-	<input type="text" name="<spring:message code="label.login.username"/>" id="inputEmail" class="form-control"
+	<input type="text" name="username" id="inputEmail" class="form-control"
 		placeholder="<spring:message code="label.login.username.placeholder"/>" required autofocus> 
 	<input type="password"
-		name="<spring:message code="label.login.password"/>" id="inputPassword" class="form-control"
+		name="password" id="inputPassword" class="form-control"
 		placeholder="<spring:message code="label.login.password.placeholder"/>" required>
 	<button class="btn btn-lg btn-primary btn-block" type="submit"><spring:message code="label.login.submit"/></button>
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>

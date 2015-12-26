@@ -57,11 +57,11 @@ $(document).ready(function(){
 	
 	<!--  Registration success check. -->	
 	<c:if test="${success eq true}">
-		<div class="alert alert-success">Registration successfully!</div>
+		<div class="alert alert-success"><spring:message code="label.register.message" /></div>
 	</c:if>
 
 	<div class="form-group">
-		<label for="name" class="col-sm-2 control-label">Name:</label>
+		<label for="name" class="col-sm-2 control-label"><spring:message code="label.register.name" /></label>
 		<div class="col-sm-10">
 			<form:input path="name" cssClass="form-control" />
 			<form:errors path="name"/>
@@ -69,14 +69,14 @@ $(document).ready(function(){
 	</div>
 
 	<div class="form-group">
-		<label for="email" class="col-sm-2 control-label">Email:</label>
+		<label for="email" class="col-sm-2 control-label"><spring:message code="label.register.email" /></label>
 		<div class="col-sm-10">
 			<form:input path="email" cssClass="form-control" />
 			<form:errors path="email"/>
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="password" class="col-sm-2 control-label">Password:</label>
+		<label for="password" class="col-sm-2 control-label"><spring:message code="label.register.password" /></label>
 		<div class="col-sm-10">
 			<form:password path="password" cssClass="form-control" />
 		<form:errors path="password"/>
@@ -84,14 +84,14 @@ $(document).ready(function(){
 	</div>
 	
 	<div class="form-group">
-		<label for="password" class="col-sm-2 control-label">Password again:</label>
+		<label for="password" class="col-sm-2 control-label"><spring:message code="label.register.passwordAgain" /></label>
 		<div class="col-sm-10">
 			<input type="password" name="password_again" id="password_again" class="form-control"/>
 		</div>
 	</div>
 	<div class="form-group">
 		<div class="col-sm-2">
-			<input type="submit" value="Save" class="btn btn-lg btn-primary" />
+			<input type="submit" value="<spring:message code="label.register.save" />" class="btn btn-lg btn-primary" />
 		</div>
 	</div>
 </form:form>
