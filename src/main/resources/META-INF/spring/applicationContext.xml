@@ -41,6 +41,9 @@
 	<beans profile ="localH" >
 		<import resource="db-context_local_HSQL.xml" />
 	</beans>
+        <beans profile ="dev" >
+                <import resource="db-context_dev_MYSQL.xml" />
+        </beans>
 	<!-- ********************************************************** -->	
 
 </beans>
