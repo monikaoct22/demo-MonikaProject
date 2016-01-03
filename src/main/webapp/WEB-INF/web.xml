@@ -57,6 +57,21 @@
 		<param-value>true</param-value>
 	</context-param>
 	
+	<!-- Set the default value for mySQL database  -->
+	<!--While maven build on prod - mvn -Dspring.profiles.active="prod" -->
+	<!-- <context-param>
+		<param-name>spring.profiles.default</param-name>
+		<param-value>localM</param-value>
+	</context-param> -->
+	
+	<!-- Set the default value for database.  -->
+	<!--While maven build on prod - mvn -Dspring.profiles.active="prod" -->
+	<env-entry>
+		<env-entry-name>spring.profiles.active</env-entry-name>
+		<env-entry-type>java.lang.String</env-entry-type>
+		<env-entry-value>${env}</env-entry-value>
+	</env-entry>
+	
 	<!-- TODO: Will use accordingly. -->
 	<error-page>
 		<exception-type>org.springframework.web.HttpSessionRequiredException</exception-type>

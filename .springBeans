@@ -9,7 +9,7 @@
 	<configs>
 		<config>src/main/webapp/WEB-INF/dispatcher-servlet.xml</config>
 		<config>src/main/resources/META-INF/spring/security.xml</config>
-		<config>src/main/resources/META-INF/spring/app-base-context.xml</config>
+		<config>src/main/resources/META-INF/spring/db-context_local_HSQL.xml</config>
 	</configs>
 	<autoconfigs>
 		<config>src/main/resources/META-INF/spring/applicationContext.xml</config>

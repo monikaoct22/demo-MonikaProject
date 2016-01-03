@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:task="http://www.springframework.org/schema/task" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.8.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd">
 
 	<!-- Import spring configuration xml. -->
 	<import resource="security.xml" />
-	<import resource="app-base-context.xml" />
-
+	
+	<!-- ***********Define the base package of repository ***************************** -->
+	<jpa:repositories base-package="com.monika.*.repository"></jpa:repositories>
+	
+	<!-- To use transactions. Enable transaction-->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	
 	<context:component-scan base-package="com.monika.*">
 		<context:exclude-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
@@ -19,5 +30,17 @@
 	<util:properties id="propertyConfigurer" location="classpath:application.properties" />
 	<context:property-placeholder
 		properties-ref="propertyConfigurer" file-encoding="UTF-8" />
+		
+	<!-- Schedule saving the item in database -->
+	<!-- <task:annotation-driven/> -->
+	
+	<!-- import app-base-context.xml file based on envoirnment and selected database.  -->
+	<beans profile ="local" >
+		<import resource="db-context_local_MYSQL.xml" />
+	</beans>
+	<beans profile ="localH" >
+		<import resource="db-context_local_HSQL.xml" />
+	</beans>
+	<!-- ********************************************************** -->	
 
 </beans>

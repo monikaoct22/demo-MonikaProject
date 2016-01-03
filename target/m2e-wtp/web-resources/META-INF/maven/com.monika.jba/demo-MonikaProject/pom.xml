@@ -14,6 +14,7 @@
 		<spring.data.jpa>1.9.0.RELEASE</spring.data.jpa>
 		<hibernate.support>5.0.2.Final</hibernate.support>
 		<hsql.db.support>2.3.3</hsql.db.support>
+		<mysql.db.support>5.1.38</mysql.db.support>
 		<javax.sevlet.jstl>1.2</javax.sevlet.jstl>
 	</properties>
 
@@ -44,6 +45,12 @@
 			<groupId>org.hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
 			<version>${hsql.db.support}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql.db.support}</version>
 		</dependency>
 
 		<!-- Apache Tiles support. -->
@@ -251,6 +258,8 @@
 	</dependencies>
 	
 	<!-- Implement profiles in maven for the different environment. -->
+	<!-- We can change default profile dynamically while maven build
+			mvn package -Denv=dev/prod  -->
 	<profiles>
 		<profile>
 			<id>local</id>
@@ -259,19 +268,20 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<build.profile.id>local</build.profile.id>
+				<env>local</env>
+				<!-- <profileName>localH</profileName> -->
 			</properties>
 		</profile>
 		<profile>
 			<id>dev</id>
 			<properties>
-				<build.profile.id>dev</build.profile.id>
+				<env>dev</env>
 			</properties>
 		</profile>
 		<profile>
 			<id>prod</id>
 			<properties>
-				<build.profile.id>prod</build.profile.id>
+				<env>prod</env>
 			</properties>
 		</profile>
 	</profiles>
@@ -281,7 +291,7 @@
 		<filters>
 			<!-- Ensures that the config.properties file is always loaded from the 
 				configuration directory of the active Maven profile. -->
-			<filter>src/main/profiles/${build.profile.id}/config.properties</filter>
+			<filter>src/main/profiles/${env}.properties</filter>
 		</filters>
 		<plugins>
 			<plugin>
@@ -293,12 +303,25 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
+			
+			<!-- Added so that spring.profiles.active can set as maven profile -->
+			<plugin>
+	            <artifactId>maven-war-plugin</artifactId>
+	            <version>2.3</version>
+	            <configuration>    
+	            <filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
+	            </configuration>
+        	</plugin>
 		</plugins>
 		
 		<resources>
 			<resource>
 				<filtering>true</filtering>
 				<directory>src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>src/main/webapp</directory>
+				<filtering>true</filtering>
 			</resource>
 		</resources>
 	</build>

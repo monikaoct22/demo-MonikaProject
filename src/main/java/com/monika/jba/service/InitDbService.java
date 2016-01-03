@@ -40,40 +40,42 @@ public class InitDbService {
 	 */
 	@PostConstruct
 	public void init() {
-		Role roleUser = new Role();
-		roleUser.setName("ROLE_ADMIN");
-		roleRepository.save(roleUser);
+		if (roleRepository.findByName("ROLE_ADMIN") == null) {
 
-		Role roleAdmin = new Role();
-		roleAdmin.setName("ROLE_USER");
-		roleRepository.save(roleAdmin);
+			Role roleUser = new Role();
+			roleUser.setName("ROLE_ADMIN");
+			roleRepository.save(roleUser);
 
-		User userAdmin = new User();
-		userAdmin.setEnabled(true);
-		userAdmin.setName("admin");
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		userAdmin.setPassword(encoder.encode("admin"));
-		userAdmin.setEmail("admin@gmail.com");
-		
-		List<Role> roles = new ArrayList<Role>();
-		roles.add(roleAdmin);
-		roles.add(roleUser);
-		userAdmin.setRoles(roles);
-		userRepository.save(userAdmin);
+			Role roleAdmin = new Role();
+			roleAdmin.setName("ROLE_USER");
+			roleRepository.save(roleAdmin);
 
-		Blog myBlog = new Blog();
-		myBlog.setName("Java Blog");
-		myBlog.setUrl("http://www.tutorialspoint.com/");
-		myBlog.setUser(userAdmin);
-		blogRepository.save(myBlog);
+			User userAdmin = new User();
+			userAdmin.setEnabled(true);
+			userAdmin.setName("admin");
+			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+			userAdmin.setPassword(encoder.encode("admin"));
+			userAdmin.setEmail("admin@gmail.com");
 
-		Item item1 = new Item(myBlog, "Envionment Setup",
-				"http://www.tutorialspoint.com/java/java_environment_setup.htm", new Date());
-		itemRepository.save(item1);
+			List<Role> roles = new ArrayList<Role>();
+			roles.add(roleAdmin);
+			roles.add(roleUser);
+			userAdmin.setRoles(roles);
+			userRepository.save(userAdmin);
 
-		Item item2 = new Item(myBlog, "Regular Expressions",
-				"http://www.tutorialspoint.com/java/java_regular_expressions.htm", new Date());
-		itemRepository.save(item2);
+			Blog myBlog = new Blog();
+			myBlog.setName("Java Blog");
+			myBlog.setUrl("http://www.tutorialspoint.com/");
+			myBlog.setUser(userAdmin);
+			blogRepository.save(myBlog);
 
+			Item item1 = new Item(myBlog, "Envionment Setup",
+					"http://www.tutorialspoint.com/java/java_environment_setup.htm", new Date());
+			itemRepository.save(item1);
+
+			Item item2 = new Item(myBlog, "Regular Expressions",
+					"http://www.tutorialspoint.com/java/java_regular_expressions.htm", new Date());
+			itemRepository.save(item2);
+		}
 	}
 }
