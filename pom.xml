@@ -259,14 +259,10 @@
 	
 	<!-- Implement profiles in maven for the different environment. -->
 	<!-- We can change default profile dynamically while maven build
-			mvn package -Denv=dev/prod  -->
+			mvn package -Denv=local/dev/test  -->
 	<profiles>
 		<profile>
 			<id>local</id>
-			<!-- The development profile is active by default -->
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
 			<properties>
 				<env>local</env>
 				<!-- <profileName>localH</profileName> -->
@@ -274,14 +270,18 @@
 		</profile>
 		<profile>
 			<id>dev</id>
+			<!-- The development profile is active by default -->
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
 			<properties>
 				<env>dev</env>
 			</properties>
 		</profile>
 		<profile>
-			<id>prod</id>
+			<id>test</id>
 			<properties>
-				<env>prod</env>
+				<env>test</env>
 			</properties>
 		</profile>
 	</profiles>
@@ -303,25 +303,12 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
-			
-			<!-- Added so that spring.profiles.active can set as maven profile -->
-			<plugin>
-	            <artifactId>maven-war-plugin</artifactId>
-	            <version>2.3</version>
-	            <configuration>    
-	            <filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
-	            </configuration>
-        	</plugin>
 		</plugins>
 		
 		<resources>
 			<resource>
 				<filtering>true</filtering>
 				<directory>src/main/resources</directory>
-			</resource>
-			<resource>
-				<directory>src/main/webapp</directory>
-				<filtering>true</filtering>
 			</resource>
 		</resources>
 	</build>

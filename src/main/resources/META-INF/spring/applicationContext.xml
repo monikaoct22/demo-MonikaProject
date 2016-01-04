@@ -15,6 +15,7 @@
 
 	<!-- Import spring configuration xml. -->
 	<import resource="security.xml" />
+	<import resource="db-base-context.xml" />
 	
 	<!-- ***********Define the base package of repository ***************************** -->
 	<jpa:repositories base-package="com.monika.*.repository"></jpa:repositories>
@@ -34,16 +35,4 @@
 	<!-- Schedule saving the item in database -->
 	<!-- <task:annotation-driven/> -->
 	
-	<!-- import app-base-context.xml file based on envoirnment and selected database.  -->
-	<beans profile ="local" >
-		<import resource="db-context_local_MYSQL.xml" />
-	</beans>
-	<beans profile ="localH" >
-		<import resource="db-context_local_HSQL.xml" />
-	</beans>
-        <beans profile ="dev" >
-                <import resource="db-context_dev_MYSQL.xml" />
-        </beans>
-	<!-- ********************************************************** -->	
-
 </beans>
