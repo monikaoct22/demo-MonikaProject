@@ -16,6 +16,8 @@
 		<hsql.db.support>2.3.3</hsql.db.support>
 		<mysql.db.support>5.1.38</mysql.db.support>
 		<javax.sevlet.jstl>1.2</javax.sevlet.jstl>
+		<org.slf4j.version>1.7.12</org.slf4j.version>
+		<log4j>1.2.17</log4j>
 	</properties>
 
 	<dependencies>
@@ -46,7 +48,7 @@
 			<artifactId>hsqldb</artifactId>
 			<version>${hsql.db.support}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -96,7 +98,13 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.7.12</version>
+			<version>${org.slf4j.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j}</version>
 		</dependency>
 
 		<!-- JSTL Support -->
@@ -256,10 +264,10 @@
 		</dependency>
 
 	</dependencies>
-	
+
 	<!-- Implement profiles in maven for the different environment. -->
-	<!-- We can change default profile dynamically while maven build
-			mvn package -Denv=local/dev/test  -->
+	<!-- We can change default profile dynamically while maven build mvn package 
+		-Denv=local/dev/test -->
 	<profiles>
 		<profile>
 			<id>local</id>
@@ -285,7 +293,7 @@
 			</properties>
 		</profile>
 	</profiles>
-	
+
 	<build>
 		<finalName>Blog-Demo</finalName>
 		<filters>
@@ -304,7 +312,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		
+
 		<resources>
 			<resource>
 				<filtering>true</filtering>
@@ -312,7 +320,7 @@
 			</resource>
 		</resources>
 	</build>
-	
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>

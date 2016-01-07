@@ -4,6 +4,7 @@ import java.security.Principal;
 
 import javax.validation.Valid;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +27,7 @@ import com.monika.jba.service.UserService;
  */
 @Controller
 public class UserController {
+	private final static Logger logger = Logger.getLogger(UserController.class);
 
 	@Autowired
 	private UserService userservice;
