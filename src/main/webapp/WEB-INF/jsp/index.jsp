@@ -6,6 +6,9 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <h1><spring:message code="label.index.heading"></spring:message></h1>
+
+<th><a href="/demoMonikaProject/ItemsExport.xls">Download Excel Document</a></th>
+
 <table class="table table-bordered table-hover table-stripped">
 
 	<thead>
@@ -23,7 +26,7 @@
 				 <c:out value="${item.blog.name}"/>
 				</td>
 				<td><strong> <a href="<c:out value ="${item.link}"/>"
-						target="_blank"> <c:out value="${item.title }" />
+						target="_blank"> <c:out value="${item.title}" />
 					</a>
 				</strong> <br /> ${item.description}</td>
 			</tr>

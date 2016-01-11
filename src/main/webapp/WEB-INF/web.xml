@@ -25,6 +25,7 @@
 	<servlet-mapping>
 		<servlet-name>dispatcher</servlet-name>
 		<url-pattern>*.html</url-pattern>
+		<url-pattern>*.xls</url-pattern>
 		<url-pattern>*.json</url-pattern>
 		<url-pattern>*.htm</url-pattern>
 		<url-pattern>*.xml</url-pattern>

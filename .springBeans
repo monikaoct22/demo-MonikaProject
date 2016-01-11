@@ -9,6 +9,7 @@
 	<configs>
 		<config>src/main/webapp/WEB-INF/dispatcher-servlet.xml</config>
 		<config>src/main/resources/META-INF/spring/security.xml</config>
+		<config>src/main/webapp/WEB-INF/defs/spring-excel-views.xml</config>
 	</configs>
 	<autoconfigs>
 		<config>src/main/resources/META-INF/spring/applicationContext.xml</config>

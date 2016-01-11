@@ -1,5 +1,6 @@
 package com.monika.jba.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -8,13 +9,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  * @author Monika
  *
  */
 @Entity
-public class Item {
+@Table(name = "Item")
+public class Item implements Serializable {
 
 	/**
 	 * No Argument Constructor.
@@ -37,6 +40,8 @@ public class Item {
 		this.link = link;
 		this.publishedDate = publishedDate;
 	}
+
+	private static final long serialVersionUID = 8634209606034270882L;
 
 	@Id
 	@GeneratedValue
