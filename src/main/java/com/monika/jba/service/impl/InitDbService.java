@@ -1,4 +1,4 @@
-package com.monika.jba.service;
+package com.monika.jba.service.impl;
 
 import java.util.ArrayList;
 import java.util.Date;

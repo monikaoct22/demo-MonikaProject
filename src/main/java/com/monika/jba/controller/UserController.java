@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.monika.jba.entity.Blog;
 import com.monika.jba.entity.Item;
 import com.monika.jba.entity.User;
-import com.monika.jba.service.Blogservice;
+import com.monika.jba.service.BlogService;
 import com.monika.jba.service.ItemService;
 import com.monika.jba.service.UserService;
 
@@ -33,7 +33,7 @@ public class UserController {
 	private UserService userservice;
 
 	@Autowired
-	private Blogservice blogservice;
+	private BlogService blogservice;
 
 	@Autowired
 	private ItemService itemService;
@@ -45,17 +45,14 @@ public class UserController {
 	public Blog constructBlog() {
 		return new Blog();
 	}
-	
-	
+
 	@ModelAttribute("item")
 	public Item constructItem() {
 		return new Item();
-		
-		
-	}
-	
 
-	 /**
+	}
+
+	/**
 	 * @param model
 	 * @param principal
 	 * @return
@@ -63,10 +60,10 @@ public class UserController {
 	@RequestMapping("/account")
 	public String showRegistrer(Model model, Principal principal) {
 		String name = principal.getName();
-		
+
 		User user = userservice.findOneWithBlogs(name);
 		model.addAttribute("user", user);
-		//String str = "redirect:/users/" + user.getId() + ".html"; 
+		// String str = "redirect:/users/" + user.getId() + ".html";
 		return "account";
 	}
 
@@ -76,9 +73,10 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping(value = "/account", method = RequestMethod.POST)
-	public String doAddBlog(Model model, @Valid @ModelAttribute("blog") Blog blog,BindingResult result, Principal principal) {
-		if(result.hasErrors()){
-			return showRegistrer(model,principal);
+	public String doAddBlog(Model model, @Valid @ModelAttribute("blog") Blog blog, BindingResult result,
+			Principal principal) {
+		if (result.hasErrors()) {
+			return showRegistrer(model, principal);
 		}
 		String name = principal.getName();
 		blogservice.save(blog, name);
@@ -91,20 +89,20 @@ public class UserController {
 	 */
 	@RequestMapping(value = "/account/{id}")
 	public String removeBlog(@PathVariable int id) {
-		Blog blog=blogservice.findOne(id);
+		Blog blog = blogservice.findOne(id);
 		blogservice.delete(blog);
 		return "redirect:/account.html";
 	}
-	
-	@RequestMapping(value ="/addItem/{id},method = RequestMethod.POST")
-	public String addItem(Model model,@PathVariable int id, @Valid @ModelAttribute("item") Item item,BindingResult result, Principal principal){
-		if(result.hasErrors()){
-			return showRegistrer(model,principal);
+
+	@RequestMapping(value = "/addItem/{id},method = RequestMethod.POST")
+	public String addItem(Model model, @PathVariable int id, @Valid @ModelAttribute("item") Item item,
+			BindingResult result, Principal principal) {
+		if (result.hasErrors()) {
+			return showRegistrer(model, principal);
 		}
 		itemService.save(item, id);
 		return "redirect:/account.html";
-		
+
 	}
 
-	
 }

@@ -41,6 +41,6 @@
 	<!-- This can be used if we want to fetch user from reposirory rather than 
 		hardcode query here. -->
 	<beans:bean id="customUserDetailsService"
-		class="com.monika.jba.service.CustomUserDetailsService" />
+		class="com.monika.jba.service.impl.CustomUserDetailsServiceImpl" />
 
 </beans:beans>

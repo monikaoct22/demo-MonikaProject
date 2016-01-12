@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.monika.jba.entity.Item;
-import com.monika.reporting.service.ReportingService;
+import com.monika.reporting.service.Impl.ReportingServiceImpl;
 
 /**
  * @author Rohit
@@ -19,7 +19,7 @@ import com.monika.reporting.service.ReportingService;
 public class ReportingController {
 
 	@Autowired
-	protected ReportingService reportingService;
+	protected ReportingServiceImpl reportingService;
 
 	/**
 	 * @return

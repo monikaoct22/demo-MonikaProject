@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.monika.jba.service.ItemService;
 
 /**
@@ -19,7 +18,7 @@ public class IndexController {
 	/**
 	 * @return
 	 *
-	 * 	Home page of the application will be called from here.
+	 * 		Home page of the application will be called from here.
 	 * 
 	 */
 	@Autowired
@@ -29,7 +28,7 @@ public class IndexController {
 	public String index(Model model) {
 		logger.info("Cal index page of this website.");
 		logger.error("This is error log entry");
-		
+
 		model.addAttribute("items", itemService.getItems());
 		return "index";
 	}

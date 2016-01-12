@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.monika.jba.entity.User;
 import com.monika.jba.service.UserService;
 
@@ -45,7 +44,8 @@ public class RegisterController {
 	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.POST)
-	public String doRegistrer(@Valid @ModelAttribute("user") User user, BindingResult result,RedirectAttributes redirectAttributes) {
+	public String doRegistrer(@Valid @ModelAttribute("user") User user, BindingResult result,
+			RedirectAttributes redirectAttributes) {
 		if (result.hasErrors()) {
 			return "user-register";
 		}
@@ -53,7 +53,7 @@ public class RegisterController {
 		redirectAttributes.addFlashAttribute("success", true);
 		return "redirect:/register.html";
 	}
-	
+
 	@RequestMapping("/available")
 	@ResponseBody
 	public String available(@RequestParam String username) {
